@@ -1,0 +1,5 @@
+modelo,MAE_%,RMSE_%,R2
+Baseline (media train),0.1299,0.1908,-0.016
+Ridge,0.1066,0.1685,0.207
+Random Forest,0.1066,0.1685,0.2069
+Gradient Boosting,0.1079,0.1694,0.1993

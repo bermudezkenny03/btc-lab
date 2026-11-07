@@ -1,0 +1,7 @@
+{
+  "fecha_base": "2026-06-15",
+  "prob_sube": 0.4701,
+  "magnitud_esperada_pct": 2.172,
+  "modelo_clasificacion": "Regresión logística",
+  "modelo_magnitud": "Ridge"
+}

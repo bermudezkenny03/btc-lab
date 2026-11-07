@@ -1,0 +1,5 @@
+modelo,accuracy,balanced_acc,f1,roc_auc_test,roc_auc_cv_train
+Baseline (mayoría),0.4967,0.5,0.6637,0.5,0.5
+Regresión logística,0.5345,0.5345,0.5291,0.5404,0.5251
+Random Forest,0.4819,0.4821,0.496,0.4942,0.5496
+Gradient Boosting,0.4901,0.4894,0.4238,0.5072,0.5331

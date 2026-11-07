@@ -1,0 +1,5 @@
+modelo,MAE_%,RMSE_%,R2,acierto_direccion
+Baseline (media train),0.3214,0.4908,-0.0001,0.5043
+Ridge,0.3213,0.4909,-0.0003,0.5136
+Random Forest,0.3217,0.4922,-0.0055,0.5114
+Gradient Boosting,0.3219,0.4923,-0.0062,0.5023

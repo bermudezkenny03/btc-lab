@@ -1,0 +1,5 @@
+resolucion,mejor_clasificador,accuracy,accuracy_baseline,roc_auc_test,mejor_reg_magnitud,MAE_%,MAE_baseline_%,mejora_MAE_%,R2_magnitud,acierto_direccion_retorno,k_clusters,ratio_riesgo_clusters
+1d,Regresión logística,0.5345,0.4967,0.5404,Ridge,1.2059,1.4877,18.942,0.0297,0.5082,2,1.5325
+4h,Random Forest,0.5218,0.5066,0.5396,Random Forest,0.4682,0.5995,21.9016,0.1107,0.4977,2,1.9911
+1h,Gradient Boosting,0.5303,0.5043,0.5424,Gradient Boosting,0.2163,0.2433,11.0974,0.155,0.5136,2,2.2439
+15m,Random Forest,0.5279,0.4992,0.54,Ridge,0.1066,0.1299,17.9369,0.207,0.5117,2,2.6402
