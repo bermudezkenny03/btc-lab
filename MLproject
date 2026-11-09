@@ -1,0 +1,7 @@
+name: prediccion-btc
+
+entry_points:
+  main:
+    parameters:
+      n_estimators: {type: int, default: 100}
+    command: "python src/train.py --n-estimators {n_estimators}"

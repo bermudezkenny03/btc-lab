@@ -182,3 +182,18 @@ El mismo pipeline se ejecutó sobre las cuatro resoluciones. En las intradía el
 - **Ventana de entrenamiento:** en 1h y 15m se usan solo las **20 000 velas de entrenamiento más recientes** para acotar el tiempo de cómputo. En 1h eso cubre 2022-06 → 2024-10 y en 15m solo 2024-03 → 2024-10 (~6 meses), mientras que en 1d y 4h se usa todo el histórico de entrenamiento. El tramo de prueba es el mismo en todas (desde oct-2024).
 - **Modelos más ligeros en 1h y 15m** (`--fast`: 100 árboles en Random Forest y 80 en Gradient Boosting, en lugar de 300 y 150).
 - Por tanto, los resultados de 1h y 15m son una cota prudente: con más datos de entrenamiento y modelos completos podrían cambiar.
+
+## 11. Seguimiento con MLflow
+
+El mismo laboratorio queda registrado como experimentos. Los scripts viven en `src/` y usan el paquete `btc_lab/`.
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+$env:MLFLOW_TRACKING_URI="sqlite:///mlflow.db"
+python src/train.py --data data/btc_1d_data_2018_to_2025.csv --n-estimators 100
+python src/register.py
+python src/predict.py data/btc_1d_data_2018_to_2025.csv --alias challenger
+mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5000
+```
+
+La interfaz abre en http://127.0.0.1:5000. Ahí aparecen tres experimentos: `prediccion-btc` (¿sube o baja?), `magnitud-btc` y `regimenes-btc`. `src/register.py` deja el mejor clasificador, por ROC AUC, con el alias `challenger`. El notebook de exploración es `notebooks/01_exploracion.ipynb`. `mlflow.db` y `mlruns/` no van a Git: se regeneran al entrenar.
