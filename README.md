@@ -14,7 +14,16 @@ Dataset: [Bitcoin Historical Datasets 2018-2024 (Kaggle, novandraanugrah)](https
 
 ```
 btc_lab/
-├── lab_btc.py            # Pipeline completo (carga, limpieza, features, 3 tareas, gráficos)
+├── lab_btc.py            # CLI: lee argumentos y llama a btc_lab.pipeline
+├── btc_lab/              # paquete (una responsabilidad por módulo)
+│   ├── config.py         # parámetros de la corrida
+│   ├── domain.py         # contratos CandleSource y FeatureBuilder
+│   ├── pipeline.py       # orquesta la corrida; no calcula features ni entrena
+│   ├── data/             # fuentes de velas, limpieza y corte temporal
+│   ├── features/         # indicadores y variables técnicas
+│   ├── models/           # catálogo de clasificadores y regresores
+│   ├── tasks/            # clasificación, regresión, agrupación, pronóstico
+│   └── reporting/        # gráficos
 ├── compare_freqs.py      # Compara las 4 resoluciones (1d, 4h, 1h, 15m)
 ├── run_all.sh            # Ejecuta todo de punta a punta
 ├── requirements.txt
@@ -25,6 +34,8 @@ btc_lab/
 │   └── comparacion_resoluciones.(csv|png)
 └── README.md
 ```
+
+El comando no cambia. El paquete separa carga, variables, modelos y tareas para poder agregar un modelo o una fuente de datos registrándolo, sin reescribir el pipeline.
 
 ## 2. Reproducir
 
