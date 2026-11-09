@@ -8,7 +8,7 @@ from config import EXPERIMENTO, MODELO_REGISTRADO, usar_almacen
 usar_almacen()
 mejores = mlflow.search_runs(
     experiment_names=[EXPERIMENTO],
-    filter_string="tags.baseline = 'false'",
+    filter_string="tags.tarea = 'clasificacion' and tags.baseline = 'false'",
     order_by=["metrics.roc_auc_test DESC"],
     max_results=1,
 )

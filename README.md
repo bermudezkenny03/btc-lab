@@ -190,10 +190,12 @@ El mismo laboratorio queda registrado como experimentos. Los scripts viven en `s
 ```powershell
 .\.venv\Scripts\Activate.ps1
 $env:MLFLOW_TRACKING_URI="sqlite:///mlflow.db"
-python src/train.py --data data/btc_1d_data_2018_to_2025.csv --n-estimators 100
+python src/train.py --data data/btc_1d_data_2018_to_2025.csv
 python src/register.py
 python src/predict.py data/btc_1d_data_2018_to_2025.csv --alias challenger
 mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5000
 ```
 
-La interfaz abre en http://127.0.0.1:5000. Ahí aparecen tres experimentos: `prediccion-btc` (¿sube o baja?), `magnitud-btc` y `regimenes-btc`. `src/register.py` deja el mejor clasificador, por ROC AUC, con el alias `challenger`. El notebook de exploración es `notebooks/01_exploracion.ipynb`. `mlflow.db` y `mlruns/` no van a Git: se regeneran al entrenar.
+`src/train.py` no vuelve a calcular las métricas: llama a las tareas de `btc_lab` (clasificación con validación cruzada temporal, regresión del retorno y de la magnitud, pronóstico reentrenado con todo el histórico, y clusters). Los árboles son los del laboratorio: 300 en Random Forest y 150 en Gradient Boosting. `--fast` usa los mismos recortes que `lab_btc.py`.
+
+La interfaz abre en http://127.0.0.1:5000. Ahí aparecen `prediccion-btc`, `retorno-btc`, `magnitud-btc`, `pronostico-btc` y `regimenes-btc`. `src/register.py` deja el mejor clasificador, por ROC AUC de prueba, con el alias `challenger`. El notebook `notebooks/01_exploracion.ipynb` solo explora. `mlflow.db` y `mlruns/` no van a Git: se regeneran al entrenar.

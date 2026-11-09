@@ -12,7 +12,9 @@ if str(RAIZ) not in sys.path:
 
 EXPERIMENTO = "prediccion-btc"
 EXPERIMENTO_MAGNITUD = "magnitud-btc"
+EXPERIMENTO_RETORNO = "retorno-btc"
 EXPERIMENTO_REGIMENES = "regimenes-btc"
+EXPERIMENTO_PRONOSTICO = "pronostico-btc"
 MODELO_REGISTRADO = "clasificador-btc"
 SEMILLA = 42
 CSV_DEFECTO = RAIZ / "data" / "btc_1d_data_2018_to_2025.csv"
